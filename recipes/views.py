@@ -48,6 +48,7 @@ class RecipeDetail(View):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
+            comment.post_id = recipe.id
             comment.save()
         else:
             comment_form = CommentForm()
