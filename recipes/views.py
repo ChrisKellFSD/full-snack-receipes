@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Recipe
 from .forms import CommentForm
 
@@ -51,6 +52,7 @@ class RecipeDetail(View):
             comment.recipe = recipe
             comment.post_id = recipe.id
             comment.save()
+            messages.success(request, "Thank you. Your comment was submitted successfully!")
         else:
             comment_form = CommentForm()
 
