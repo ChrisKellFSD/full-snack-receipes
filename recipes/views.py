@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, HttpResponse, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from .models import Recipe
-from .forms import CommentForm
+from .forms import CommentForm, RecipeForm
 
 
 class RecipeList(generic.ListView):
@@ -80,3 +82,12 @@ class RecipeLike(View):
 
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+class AddRecipe(SuccessMessageMixin, CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'recipe_form.html'
+    success_message = 'Recipe Successfully Added'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
