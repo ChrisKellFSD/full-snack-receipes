@@ -83,11 +83,7 @@ class RecipeLike(View):
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 class AddRecipe(SuccessMessageMixin, CreateView):
+    
     model = Recipe
-    form_class = RecipeForm
     template_name = 'recipe_form.html'
-    success_message = 'Recipe Successfully Added'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    fields = ['title', 'ingredients', 'method', 'featured_image']
