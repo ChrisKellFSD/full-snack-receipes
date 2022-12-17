@@ -1,9 +1,12 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, reverse
+from django.shortcuts import render, HttpResponse, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+from django.utils.text import slugify
+from django.core.paginator import Paginator
+from django.urls import reverse_lazy
 from .models import Recipe
 from .forms import CommentForm, RecipeForm
 
@@ -82,8 +85,29 @@ class RecipeLike(View):
 
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-class AddRecipe(SuccessMessageMixin, CreateView):
-    
+
+class AddRecipe(CreateView):
     model = Recipe
     template_name = 'recipe_form.html'
-    fields = ['title', 'ingredients', 'method', 'featured_image']
+    form_class = RecipeForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+
+class UsersRecipeList(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            recipes = Recipe.objects.filter(author=request.user)
+            paginator = Paginator(recipes, 4)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            return render(request, 'your_recipes.html', {'page_obj': page_obj})
+        else:
+            return render(request, 'your_recipes.html')

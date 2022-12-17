@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -30,6 +32,14 @@ class Recipe(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+
+    def get_absolute_url(self):
+        return reverse('recipes:recipe_detail', kwargs={"id": self.id})
+
+    def save(self, *args, **kwargs): 
+     if not self.slug: 
+          self.slug = slugify(self.title) 
+          return super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
