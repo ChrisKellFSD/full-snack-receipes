@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+{% if user.is_authenticated %}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h1 class="h1 display-2 text-center">My Recipes</h1>
+        <hr>
+    </div>
+</div>
+
+<!-- Add Recipe Button -->
+<div class="row">
+    <div class="col text-center">
+        <a href="{% url 'add_recipe' %}" class="btn btn-secondary mt-2">Add Recipe</a>
+    </div>
+</div>
+
+<!-- Recipe Card -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for recipe in page_obj %}
+                <div class="col-md-4 mb-1">
+                    <div class="card mb-4">
+                            <div class="card-body">
+                                    <div class="image-container">
+                                        {% if "placeholder" not in recipe.featured_image %}
+                                        <img class="card-img-top img-fit" src=" {{ recipe.featured_image }}" height="300" alt="{{ recipe.title }}">
+                                        {% else %}
+                                        <img class="card-img-top img-fit" src="/media/images/default_recipe.jpg" height="300" alt="A recipe in waiting">
+                                        {% endif %}
+                                    </div>
+                                        <h2 class="card-title">{{ recipe.title }}</h2>
+                                        <p class="card-text">{{ recipe.excerpt|safe }} </p>
+                                    <hr />
+                                    <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
+                                <!-- Edit and Delete buttons -->
+                                <div class="recipe-buttons mt-1">
+                                    <form class="me-1" action="{% url 'update_recipe' recipe.id %}" method="get"><button class="btn btn-success">Edit</button></form>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".staticBackdrop">Delete</button>
+                                </div>
+                                <!-- Modal for Deleting Recipe -->
+                                <div class="modal fade staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title staticBackdropLabel">Delete Recipe</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the recipe {{ recipe.title }}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+
+                <!-- If user has no created recipes -->
+                {% empty %}
+                <div class="container log-box">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-12 mt-4">
+                            <p class="lead text-center">Looks like you dont have any recipes yet! Try adding some now.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+    {% include "pagination.html" %}
+
+{% else %}
+
+{% include "not_logged_in.html" %}
+
+{% endif %}
+
+{% endblock %}

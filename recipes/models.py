@@ -36,10 +36,12 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('recipes:recipe_detail', kwargs={"id": self.id})
 
-    def save(self, *args, **kwargs): 
-     if not self.slug: 
-          self.slug = slugify(self.title) 
-          return super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+            return super().save(*args, **kwargs)
+        else:
+            return super().save(*args, **kwargs)
 
 
 class Comment(models.Model):

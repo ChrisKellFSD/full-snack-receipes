@@ -91,7 +91,7 @@ class AddRecipe(SuccessMessageMixin, CreateView):
     template_name = 'recipe_form.html'
     form_class = RecipeForm
     success_message = 'Recipe Successfully Added'
-    success_url = '/'
+    success_url = reverse_lazy('my_recipes')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -107,7 +107,7 @@ class UpdateRecipe(SuccessMessageMixin, UpdateView):
     template_name = 'update_recipe.html'
     form_class = RecipeForm
     success_message = 'Recipe Successfully Updated'
-    success_url = '/'
+    success_url = reverse_lazy('my_recipes')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -122,9 +122,9 @@ class UsersRecipeList(View):
     def get(self, request):
         if request.user.is_authenticated:
             recipes = Recipe.objects.filter(author=request.user)
-            paginator = Paginator(recipes, 4)
+            paginator = Paginator(recipes, 10)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
-            return render(request, 'your_recipes.html', {'page_obj': page_obj})
+            return render(request, 'my_recipes.html', {'page_obj': page_obj})
         else:
-            return render(request, 'your_recipes.html')
+            return render(request, 'my_recipes.html')

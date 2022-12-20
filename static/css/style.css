@@ -140,3 +140,8 @@ body {
     background: transparent;
     border: none;
 }
+
+.recipe-buttons {
+    position: absolute;
+    display: inline-flex;
+}
