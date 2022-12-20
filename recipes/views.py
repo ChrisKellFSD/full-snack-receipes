@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.http import HttpResponseRedirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -15,7 +15,7 @@ class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
-    paginate_by = 4
+    paginate_by = 6
 
 
 class RecipeDetail(View):
@@ -86,10 +86,27 @@ class RecipeLike(View):
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
-class AddRecipe(CreateView):
+class AddRecipe(SuccessMessageMixin, CreateView):
     model = Recipe
     template_name = 'recipe_form.html'
     form_class = RecipeForm
+    success_message = 'Recipe Successfully Added'
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+
+class UpdateRecipe(SuccessMessageMixin, UpdateView):
+    model = Recipe
+    template_name = 'update_recipe.html'
+    form_class = RecipeForm
+    success_message = 'Recipe Successfully Updated'
     success_url = '/'
 
     def form_valid(self, form):

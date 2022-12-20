@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% load cloudinary %}
+
+{% if user.is_authenticated and user.id == recipe.author.id %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="display-2 text-center mt-2">Update Recipe</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 mt-3 offset-1 g-0">
+            <form class="signup" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media}}
+                {{ form.as_p }}
+                <button class="btn btn-secondary right mb-2" type="submit" value="Save">Update</button>
+                <a href="{% url 'home' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% elif user.is_authenticated %}
+
+    {% include "forbidden_access.html" %}
+
+{% else %}
+
+    {% include "not_logged_in.html" %}
+
+{% endif %}
+
+{% endblock %}
