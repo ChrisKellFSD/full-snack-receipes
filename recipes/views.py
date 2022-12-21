@@ -116,6 +116,13 @@ class UpdateRecipe(SuccessMessageMixin, UpdateView):
 
     def form_invalid(self, form):
         return super().form_invalid(form)
+        
+
+def delete_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    recipe.delete()
+    messages.success(request, 'Recipe Deleted Successfully')
+    return redirect(reverse('my_recipes'))
 
 
 class UsersRecipeList(View):

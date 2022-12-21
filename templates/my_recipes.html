@@ -33,7 +33,7 @@
                                         {% if "placeholder" not in recipe.featured_image %}
                                         <img class="card-img-top img-fit" src=" {{ recipe.featured_image }}" height="300" alt="{{ recipe.title }}">
                                         {% else %}
-                                        <img class="card-img-top img-fit" src="/media/images/default_recipe.jpg" height="300" alt="A recipe in waiting">
+                                        <img class="card-img-top img-fit" src="https://github.com/ChrisKellFSD/full-snack-recipes/blob/main/media/images/default_recipe.jpg" height="300" alt="A recipe in waiting">
                                         {% endif %}
                                     </div>
                                         <h2 class="card-title">{{ recipe.title }}</h2>
@@ -62,6 +62,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
+                                                    <form action="{% url 'delete_recipe' recipe.slug %}" method="get"><button type="submit" class="btn btn-danger">Delete</button></form>
                                             </div>
                                         </div>
                                     </div>
