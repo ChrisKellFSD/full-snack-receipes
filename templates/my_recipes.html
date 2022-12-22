@@ -26,23 +26,25 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for recipe in page_obj %}
-                <div class="col-md-4 mb-1">
+                <div class="col-md-4">
                     <div class="card mb-4">
                             <div class="card-body">
-                                    <div class="image-container">
-                                        {% if "placeholder" not in recipe.featured_image %}
-                                        <img class="card-img-top img-fit" src=" {{ recipe.featured_image }}" height="300" alt="{{ recipe.title }}">
-                                        {% else %}
-                                        <img class="card-img-top img-fit" src="https://github.com/ChrisKellFSD/full-snack-recipes/blob/main/media/images/default_recipe.jpg" height="300" alt="A recipe in waiting">
-                                        {% endif %}
-                                    </div>
+                                <a href="{% url 'recipe_detail' recipe.slug %}" class="no-text-deco text-dark">
+                                <div class="image-container">
+                                    {% if "placeholder" in recipe.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="/media/images/default_recipe.jpg">
+                                    {% else %}
+                                    <img class="card-img-top" src="/media/images/default_recipe.jpg">
+                                    {% endif %}
                                         <h2 class="card-title">{{ recipe.title }}</h2>
                                         <p class="card-text">{{ recipe.excerpt|safe }} </p>
                                     <hr />
                                     <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
+                                </a>
                                 <!-- Edit and Delete buttons -->
                                 <div class="recipe-buttons mt-1">
-                                    <form class="me-1" action="{% url 'update_recipe' recipe.id %}" method="get"><button class="btn btn-success">Edit</button></form>
+                                    <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-success">Edit</button></form>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".staticBackdrop">Delete</button>
                                 </div>
                                 <!-- Modal for Deleting Recipe -->

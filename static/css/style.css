@@ -145,3 +145,7 @@ body {
     position: absolute;
     display: inline-flex;
 }
+
+.no-text-deco {
+    text-decoration: none;  
+}
