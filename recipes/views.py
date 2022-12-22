@@ -129,7 +129,7 @@ class UsersRecipeList(View):
     def get(self, request):
         if request.user.is_authenticated:
             recipes = Recipe.objects.filter(author=request.user)
-            paginator = Paginator(recipes, 10)
+            paginator = Paginator(recipes, 6)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
             return render(request, 'my_recipes.html', {'page_obj': page_obj})

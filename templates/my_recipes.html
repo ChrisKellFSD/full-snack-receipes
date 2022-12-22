@@ -30,25 +30,27 @@
                     <div class="card mb-4">
                             <div class="card-body">
                                 <a href="{% url 'recipe_detail' recipe.slug %}" class="no-text-deco text-dark">
-                                <div class="image-container">
-                                    {% if "placeholder" in recipe.featured_image.url %}
-                                    <img class="card-img-top"
-                                        src="/media/images/default_recipe.jpg">
-                                    {% else %}
-                                    <img class="card-img-top" src="/media/images/default_recipe.jpg">
-                                    {% endif %}
+                                    <div class="image-container">
+                                        {% if "placeholder" in recipe.featured_image.url %}
+                                        <img class="card-img-top"
+                                            src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                        {% else %}
+                                        <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
+                                        {% endif %}
                                         <h2 class="card-title">{{ recipe.title }}</h2>
                                         <p class="card-text">{{ recipe.excerpt|safe }} </p>
                                     <hr />
                                     <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
                                 </a>
+                                
                                 <!-- Edit and Delete buttons -->
                                 <div class="recipe-buttons mt-1">
                                     <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-success">Edit</button></form>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".staticBackdrop">Delete</button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=#{{recipe.slug}}>Delete</button>
                                 </div>
                                 <!-- Modal for Deleting Recipe -->
-                                <div class="modal fade staticBackdrop" data-bs-backdrop="static"
+                                
+                                <div class="modal fade staticBackdrop" id={{recipe.slug}} data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
@@ -64,12 +66,14 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
+                                                    <h1 class="text-danger">{{recipe.slug}}</h1>
                                                     <form action="{% url 'delete_recipe' recipe.slug %}" method="get"><button type="submit" class="btn btn-danger">Delete</button></form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>  
+                                
+                            </div> 
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
