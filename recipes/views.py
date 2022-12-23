@@ -125,6 +125,17 @@ def delete_recipe(request, slug):
     return redirect(reverse('my_recipes'))
 
 
+def search_recipes(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        recipes = Recipe.objects.filter(title__icontains=searched)
+        return render(request, 'search_recipes.html', {
+            'searched': searched, 'recipes': recipes
+            })
+    else:
+        return render(request, 'search_recipes.html')
+
+
 class UsersRecipeList(View):
     def get(self, request):
         if request.user.is_authenticated:
