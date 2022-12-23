@@ -42,7 +42,7 @@
                                     <hr />
                                     <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
                                 </a>
-                                
+                            </div>
                                 <!-- Edit and Delete buttons -->
                                 <div class="recipe-buttons mt-1">
                                     <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-success">Edit</button></form>
@@ -66,7 +66,6 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                    <h1 class="text-danger">{{recipe.slug}}</h1>
                                                     <form action="{% url 'delete_recipe' recipe.slug %}" method="get"><button type="submit" class="btn btn-danger">Delete</button></form>
                                             </div>
                                         </div>
