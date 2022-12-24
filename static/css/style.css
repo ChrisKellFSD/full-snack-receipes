@@ -151,4 +151,15 @@ body {
 }
 
 
-/* Search Bar */
+/* Footer */
+
+.bg-primary {
+    background-image: linear-gradient(to right, red , yellow);
+  }
+
+.logo-main {
+    max-height: 12vh;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
