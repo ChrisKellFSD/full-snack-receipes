@@ -164,3 +164,12 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SUMMERNOTE_CONFIG = {
+    'toolbar': [
+            ['font', ['bold', 'underline', 'italic']],
+            ['para', ['ul', 'ol']],
+        ],
+    'height': 400,
+    'width': '100%',
+} 
