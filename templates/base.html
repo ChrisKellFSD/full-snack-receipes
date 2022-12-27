@@ -54,13 +54,13 @@
                     </li>
                     {% endif %}
                 </ul>
-                                <!-- Search Bar -->
-                                <form class="d-flex" method="POST" action="{% url 'search_recipes' %}">
-                                    {% csrf_token %}
-                                    <input class="form-control me-2" type="search" placeholder="Search Recipes" aria-label="Search"
-                                        name="searched">
-                                    <button class="btn btn-outline-secondary" type="submit">Go</button>
-                                </form>
+                <!-- Search Bar -->
+                <form class="d-flex" method="POST" action="{% url 'search_recipes' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search Recipes" aria-label="Search"
+                        name="searched">
+                    <button class="btn btn-outline-secondary" type="submit">Go</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -96,8 +96,9 @@
     <!--Font Awesome Script-->
     <script src="https://kit.fontawesome.com/aae00821c5.js" crossorigin="anonymous"></script>
 
-    <!-- Script for popup message displayed at top of the page -->
+    <!-- Script -->
     <script src="/static/js/script.js"></script>
+    
 </body>
 
 </html>

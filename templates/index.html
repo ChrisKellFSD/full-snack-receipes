@@ -4,7 +4,7 @@
 
 <!-- Jumbotron -->
 <div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+    background-image: url('https://res.cloudinary.com/dcummh4le/image/upload/v1672156152/hero-image-dark_j7gidm.jpg');
     height: 400px;
   ">
     <div class="d-flex justify-content-center align-items-center h-100">
@@ -17,18 +17,21 @@
   </div>
 </div>
 
-<!-- Search Bar -->
-<div class="container-fluid search-container">
-    <div class="row height d-flex justify-content-center align-items-center">
-      <div class="col-md-6">
-        <div class="search-form">
-          <input type="text" class="form-control search-form-input" placeholder="Search for recipes...">
-          <button class="btn btn-outline-secondary" type="submit">Go</button>
-        </div>
-      </div>
-    </div>
+<!-- Quotation Section -->
+<div class="container-fluid">
+  <div class="row p-3">
+    <blockquote class="blockquote text-center">
+      <p class="h1 mb-3 gradient-text">"A recipe has no soul.<br> You, as the cook, must bring soul to the recipe"</p>
+      <footer class="mb-4 blockquote-footer"><cite title="Source Title">Thomas Keller</cite></footer>
+    </blockquote>
   </div>
 </div>
+  <!-- divider -->
+    <div class="section-divider mb-3"></div>
+
+   
+      <!-- divider -->
+      <div class="section-divider mb-3"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -86,6 +89,18 @@
         </ul>
     </nav>
     {% endif %}
+</div>
+
+<!-- Search Bar -->
+<div class="container-fluid search-container">
+  <div class="row height d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="search-form">
+        <input type="text" class="form-control search-form-input d-inline-block" placeholder="Search for recipes...">
+        <button class="btn btn-outline-secondary d-inline-block" type="submit">Go</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {%endblock%}

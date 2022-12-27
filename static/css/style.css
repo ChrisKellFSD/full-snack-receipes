@@ -183,6 +183,23 @@ body {
     top: -3px;
   }
 
+/* Gradient text quote */
+
+.gradient-text {
+    background: #FF1F1A;
+    background: linear-gradient(to right, #FF1F1A 0%, #ffa400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Section Divider */
+.section-divider {
+    height: 14px;
+    position: relative;
+    width: 100%;
+    background: radial-gradient(ellipse farthest-side at top center, rgb(74 39 39 / 8%), transparent);
+}
+
 
 /* Search Bar */
 .search-container {
@@ -216,17 +233,6 @@ body {
     border: none;
 }
 
-.search-button {
-    position: absolute;
-    right: 1px;
-    top: 0px;
-    border: none;
-    height: 45px;
-    background-color: red;
-    color: #fff;
-    width: 90px;
-    border-radius: 4px
-}
 
 @keyframes gradient {
     0% {
