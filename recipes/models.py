@@ -15,7 +15,7 @@ class Recipe(models.Model):
         User, on_delete=models.CASCADE, related_name="recipe_posts"
     )
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
+    excerpt = models.TextField()
     updated_on = models.DateTimeField(auto_now=True)
     ingredients = models.TextField()
     method = models.TextField()

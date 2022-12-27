@@ -183,7 +183,10 @@ body {
     top: -3px;
   }
 
+
+/* Search Bar */
 .search-container {
+    height: 25vh;
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
@@ -192,6 +195,37 @@ body {
     animation: gradient 25s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
+}
+
+.search-form {
+    position: relative;
+    top: 50px;
+    left: 20px;
+    color: #9ca3af;
+}
+
+
+.search-form-input{
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.search-form-input:focus{
+    box-shadow: none;
+    border: none;
+}
+
+.search-button {
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    border: none;
+    height: 45px;
+    background-color: red;
+    color: #fff;
+    width: 90px;
+    border-radius: 4px
 }
 
 @keyframes gradient {
