@@ -70,22 +70,39 @@ class TestViews(TestCase):
     #     self.assertEqual(edited_recipe, "Edited Title")
 
     # def test_can_delete_recipe(self):
+    #     author = User.objects.create(username='example_username')
     #     recipe = Recipe.objects.create(
-    #         title='Test Title',
-    #         excerpt='Test Excerpt',
-    #         ingredients='Test Ingredients',
-    #         method='Test Method'
-    #     )
-    #     response = self.client.get(f'/delete_recipe/{self.recipe.slug}')
+    #         title='Example Recipe',
+    #         slug='example-recipe',
+    #         author=author,
+    #         excerpt='This is an example recipe.',
+    #         ingredients='This is an example ingredient.',
+    #         method='This is an example method.'
+    #         )
+    #     response = self.client.get(f'/delete_recipe/{recipe.slug}')
     #     self.assertRedirects(response, '/my_recipes/')
 
-    def test_can_toggle_like_button(self):
-        response = self.client.post(f'/like/{self.recipe.slug}')
-        self.assertRedirects(response, f'/{self.recipe.slug}/')
-        is_user_present = self.recipe.likes.filter(id=1).exists()
-        self.assertTrue(is_user_present)
-        response = self.client.post(f'/like/{self.recipe.slug}')
-        is_user_present = self.recipe.likes.filter(id=1).exists()
-        self.assertFalse(is_user_present)
+    def test_number_of_likes(self):
+
+        author = User.objects.create(username='example_username')
+        recipe = Recipe.objects.create(
+            title='Example Recipe',
+            slug='example-recipe',
+            author=author,
+            excerpt='This is an example recipe.',
+            ingredients='This is an example ingredient.',
+            method='This is an example method.'
+            )
+    
+    # Create a few User instances to use as 'likes' for the Recipe
+        user_1 = User.objects.create(username='user_1')
+        user_2 = User.objects.create(username='user_2')
+        user_3 = User.objects.create(username='user_3')
+    
+    # Add the 'likes' to the Recipe instance
+        recipe.likes.add(user_1, user_2, user_3)
+    
+    # Assert that the number_of_likes() method returns the correct number of likes
+        self.assertEqual(recipe.number_of_likes(), 3)
 
 
