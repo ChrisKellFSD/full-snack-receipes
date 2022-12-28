@@ -29,50 +29,48 @@
   <!-- divider -->
     <div class="section-divider mb-3"></div>
 
-   
-      <!-- divider -->
-      <div class="section-divider mb-3"></div>
-
 <div class="container-fluid">
-    <div class="row">
-
-        <!-- Recipe Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for recipe in recipe_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in recipe.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://res.cloudinary.com/dcummh4le/image/upload/v1672171575/default_recipe_ih68az.jpg">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ recipe.author }}</p>
-                                </div>
-                            </div>
-                            <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                <h2 class="card-title">{{ recipe.title }}</h2>
-                                <p class="card-text">{{ recipe.excerpt }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i>
-                                {{ recipe.number_of_likes }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
-        </div>
+  <div class="row">
+    <div class="section-heading text-center">
+      <h3>The Best Recipies</h3>
     </div>
+
+    <!-- Recipe Entries Column -->
+    <div class="col-12 mt-3 left">
+      <div class="row">
+          {% for recipe in recipe_list %}
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <div class="image-container">
+                          {% if "placeholder" in recipe.featured_image.url %}
+                          <img class="card-img-top card-img-top"
+                              src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                          {% else %}
+                          <img class="card-img-top card-img-top" src=" {{ recipe.featured_image.url }}">
+                          {% endif %}
+                          <div class="image-flash">
+                              <p class="author">Author: {{ recipe.author }}</p>
+                          </div>
+                      </div>
+                      <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                          <h4 class="mt-3 card-title text-center">{{ recipe.title }}</h4>
+                          <p class="card-text text-center">{{ recipe.excerpt }}</p>
+                      </a>
+                      <hr/>
+                      <p class="card-text text-center text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i>
+                          {{ recipe.number_of_likes }}</p>
+                  </div>
+              </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class="row">
+          {% endif %}
+          {% endfor %}
+      </div>
+  </div>
+</div>
 </div>
 
 
