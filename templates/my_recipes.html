@@ -6,6 +6,7 @@
 
 {% if user.is_authenticated %}
 
+<!-- Page Heading -->
 <div class="row">
     <div class="col-8 offset-2">
         <h1 class="h1 display-2 text-center">My Recipes</h1>
@@ -28,74 +29,79 @@
                 {% for recipe in page_obj %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                            <div class="card-body mb-3">
-                                <a href="{% url 'recipe_detail' recipe.slug %}" class="no-text-deco text-dark">
-                                    <div class="image-container">
-                                        {% if "placeholder" in recipe.featured_image.url %}
-                                        <img class="card-img-top"
-                                            src="https://res.cloudinary.com/dcummh4le/image/upload/v1672171575/default_recipe_ih68az.jpg">
-                                        {% else %}
-                                        <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
-                                        {% endif %}
-                                        <h4 class="mt-3 card-title">{{ recipe.title }}</h4>
-                                        <p class="card-text">{{ recipe.excerpt|safe }} </p>
+                        <div class="card-body mb-3">
+                            <a href="{% url 'recipe_detail' recipe.slug %}" class="no-text-deco text-dark">
+                                <div class="image-container">
+                                    {% if "placeholder" in recipe.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://res.cloudinary.com/dcummh4le/image/upload/v1672171575/default_recipe_ih68az.jpg">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
+                                    {% endif %}
+                                    <h4 class="mt-3 card-title">{{ recipe.title }}</h4>
+                                    <p class="card-text">{{ recipe.excerpt|safe }} </p>
                                     <hr />
-                                    <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
-                                </a>
-                            </div>
-                                <!-- Edit and Delete buttons -->
-                                <div class="recipe-buttons mt-1">
-                                    <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-outline-success">Edit</button></form>
-                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target=#{{recipe.slug}}>Delete</button>
-                                </div>
-                                <!-- Modal for Deleting Recipe -->
-                                
-                                <div class="modal fade staticBackdrop" id={{recipe.slug}} data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title staticBackdropLabel">Delete Recipe</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete the recipe {{ recipe.title }}?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                    <form action="{% url 'delete_recipe' recipe.slug %}" method="get"><button type="submit" class="btn btn-danger">Delete</button></form>
-                                            </div>
-                                        </div>
+                                    <p class="card-text text-muted h6">{{ recipe.created_on}} <i
+                                            class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
+                            </a>
+                        </div>
+
+                        <!-- Edit and Delete buttons -->
+                        <div class="recipe-buttons mt-1">
+                            <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button
+                                    class="btn btn-outline-success">Edit</button></form>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target=#{{recipe.slug}}>Delete</button>
+                        </div>
+
+                        <!-- Modal for Deleting Recipe -->
+                        <div class="modal fade staticBackdrop" id={{recipe.slug}} data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title staticBackdropLabel">Delete Recipe</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete the recipe {{ recipe.title }}?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <form action="{% url 'delete_recipe' recipe.slug %}" method="get"><button
+                                                type="submit" class="btn btn-danger">Delete</button></form>
                                     </div>
                                 </div>
-                                
-                            </div> 
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-
-                <!-- If user has no created recipes -->
-                {% empty %}
-                <div class="container log-box">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-12 mt-4">
-                            <p class="lead text-center">Oh no! Looks like you dont have any recipes yet! Try adding some now.
-                            </p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+
+            <!-- If user has no created recipes -->
+            {% empty %}
+            <div class="container log-box">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-12 mt-4">
+                        <p class="lead text-center">Oh no! Looks like you dont have any recipes yet! Try adding some
+                            now.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
-    {% include "pagination.html" %}
+</div>
+{% include "pagination.html" %}
 
 {% else %}
 

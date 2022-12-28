@@ -24,7 +24,7 @@
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
                                     <img class="card-img-top"
-                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                        src="https://res.cloudinary.com/dcummh4le/image/upload/v1672171575/default_recipe_ih68az.jpg">
                                     {% else %}
                                     <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
                                     {% endif %}
@@ -43,14 +43,15 @@
             </div>
             <div class="row">
                 {% endif %}
-                <!-- If search results empyty -->
+
+                <!-- If search results returns none -->
                 {% empty %}
                 <div class="container log-box">
                     <div class="row justify-content-md-center">
                         <div class="col-md-8 offset-2 mt-4">
                             <h2 class="display-5">Sorry</h2>
                             <p class="lead">There are no recipes with '{{ searched }}' in the title.</p>
-                            <p>Try searching again.</p>
+                            <p>Please try searching again.</p>
                         </div>
                     </div>
                 </div>
