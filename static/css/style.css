@@ -299,6 +299,16 @@ body {
     }
 }
 
+.btn-signup {
+    background-color: #ff101d;
+    color: #fff;
+}
+
+.btn-signup:hover {
+    background-color: #fff;
+    color: #ff101d;
+}
+
 .btn-secondary {
     color: #fff;
     background-color: #ff101d;
@@ -334,3 +344,4 @@ body {
         height: 30vh;
     }
 }
+

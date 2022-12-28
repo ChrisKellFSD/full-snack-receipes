@@ -10,10 +10,10 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
 
-    # def test_get_all_recipes_page(self):
-    #     response = self.client.get('/recipes/')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'recipes.html')
+    def test_get_all_recipes_page(self):
+        response = self.client.get('/all_recipes/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'all_recipes.html')
 
     def test_get_my_recipes_page(self):
         response = self.client.get('/my_recipes/')
