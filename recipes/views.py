@@ -18,6 +18,13 @@ class RecipeList(generic.ListView):
     paginate_by = 6
 
 
+class AllRecipeList(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1).order_by('-created_on')
+    template_name = 'all_recipes.html'
+    paginate_by = 6
+
+
 class RecipeDetail(View):
 
     def get(self, request, slug, *args, **kwargs):

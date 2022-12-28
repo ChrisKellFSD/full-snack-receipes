@@ -214,17 +214,22 @@ body {
     background-attachment: fixed;
 }
 
+.search-pos {
+    position: relative;
+    top: 55px;
+}
+
 .search-form {
     position: relative;
     top: 50px;
-    left: 20px;
+    left: 10px;
     color: #9ca3af;
 }
 
 
 .search-form-input{
     height: 55px;
-    text-indent: 33px;
+    text-indent: 10px;
     border-radius: 10px;
 }
 
@@ -294,6 +299,12 @@ body {
     }
 }
 
+.btn-secondary {
+    color: #fff;
+    background-color: #ff101d;
+    border-color: #ff101d;
+}
+
 /* Card */
 
 .card-img-top {
@@ -310,4 +321,16 @@ body {
     left: -2px;
     background-color: #ffa700;
     border-radius: 0px 10px 10px 0px;
+}
+
+@media screen and (max-width: 760px) {
+    .card-img-top {
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .card-img-top {
+        height: 30vh;
+    }
 }

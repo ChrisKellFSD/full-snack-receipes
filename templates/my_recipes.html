@@ -28,7 +28,7 @@
                 {% for recipe in page_obj %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="card-body mb-3">
                                 <a href="{% url 'recipe_detail' recipe.slug %}" class="no-text-deco text-dark">
                                     <div class="image-container">
                                         {% if "placeholder" in recipe.featured_image.url %}
@@ -37,16 +37,16 @@
                                         {% else %}
                                         <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
                                         {% endif %}
-                                        <h2 class="card-title">{{ recipe.title }}</h2>
-                                        <p class="card-text">{{ recipe.excerpt|safe }} </p>
+                                        <h2 class="mt-3 card-title text-center">{{ recipe.title }}</h2>
+                                        <p class="card-text text-center">{{ recipe.excerpt|safe }} </p>
                                     <hr />
                                     <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="far fa-heart"></i> {{ recipe.number_of_likes }}</p>
                                 </a>
                             </div>
                                 <!-- Edit and Delete buttons -->
                                 <div class="recipe-buttons mt-1">
-                                    <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-success">Edit</button></form>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=#{{recipe.slug}}>Delete</button>
+                                    <form class="me-1" action="{% url 'update_recipe' recipe.slug %}" method="get"><button class="btn btn-outline-success">Edit</button></form>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target=#{{recipe.slug}}>Delete</button>
                                 </div>
                                 <!-- Modal for Deleting Recipe -->
                                 

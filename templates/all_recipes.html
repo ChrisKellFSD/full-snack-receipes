@@ -2,38 +2,15 @@
 
 {% block content %}
 
-<!-- Jumbotron -->
-<div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('https://res.cloudinary.com/dcummh4le/image/upload/v1672156152/hero-image-dark_j7gidm.jpg');
-    height: 400px;
-  ">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-white">
-        <h1 class="mb-3">Full Snack Recipes</h1>
-        <h4 class="mb-3">Where snackers come to share tasty meals from around the world!</h4>
-        <a class="btn btn-outline-light btn-lg" href="{% url 'account_signup' %}" role="button">Sign Up</a>
-      </div>
+<div class="row">
+    <div class="col-8 offset-2">
+        <h1 class="h1 display-2 text-center">All Recipes</h1>
+        <hr>
     </div>
-  </div>
 </div>
-
-<!-- Quotation Section -->
-<div class="container-fluid">
-  <div class="row p-3">
-    <blockquote class="blockquote text-center">
-      <p class="h1 mb-3 gradient-text">"A recipe has no soul.<br> You, as the cook, must bring soul to the recipe"</p>
-      <footer class="mb-4 blockquote-footer"><cite title="Source Title">Thomas Keller</cite></footer>
-    </blockquote>
-  </div>
-</div>
-  <!-- divider -->
-    <div class="section-divider mb-3"></div>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="section-heading text-center">
-      <h3>The Best Recipies</h3>
-    </div>
 
     <!-- Recipe Entries Column -->
     <div class="col-12 mt-3 left">
@@ -87,23 +64,6 @@
         </ul>
     </nav>
     {% endif %}
-</div>
-
-
-<!-- Search Bar -->
-<div class="container-fluid search-container">
-  <div class="row height d-flex justify-content-center align-items-center">
-    <div class="col-md-6">
-      <div class="input-group mb-3 search-pos">
-        <input type="text" class="form-control" placeholder="Search Recipes..." aria-label="Search Recipes" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-light" type="button">Go</button>
-        </div>
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 {%endblock%}

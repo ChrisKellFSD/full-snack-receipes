@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', views.RecipeList.as_view(), name='home'),
+    path('all_recipes/', views.AllRecipeList.as_view(), name='all_recipes'),
     path('recipe_detail/<slug:slug>/', views.RecipeDetail.as_view(), name='recipe_detail'),
     path('like/<slug:slug>', views.RecipeLike.as_view(), name='recipe_like'),
     path('add_recipe/', login_required(views.AddRecipe.as_view()), name='add_recipe'),
