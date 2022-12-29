@@ -4,7 +4,7 @@ A link to the live project can be found here (https://full-snack-recipes.herokua
 
 Full Snack Recipes is a site where users can come to view and create their favourite recipes.
 
-![responsive](media/images/Am-I-Responsive-01.jpg)
+![responsive](media/images/am-i-responsive-01.jpg)
 
 ---
 ## User Experience (UX)
@@ -35,12 +35,18 @@ These are user stories I would like to implement in the future.
 - As a user I can favorite recipes so that I can access them quickly
 - As a user I can rate users recipes so that I can score their recipes
 
+## User Story Project Board
+
+This is the board that I used throughout my project to help with my planning. The ability to move user stories from To Do - In Progress - Completed really helped to validate my progress and kept me focused throughout.
+
+![user story board](media/images/user-story-board.JPG)
+
 ---
 ## Design
 
 The look of this project is created from a combination of bootstrap class styling and the walkthrough 'I think therefore I blog project'. As well as that, I created a logo for Full Snack Recipes to help bring website branding to life.
 
-![full snack recipes logo](media/images/Full-Snack-Recipes-Logo-01.jpg)
+![full snack recipes logo](media/images/full-snack-recipes-logo-01.jpg)
 
 ---
 ### Colour Scheme
@@ -57,14 +63,16 @@ The look of this project is created from a combination of bootstrap class stylin
 ---
 ### Wireframes
 
-Wireframes were done using Figma.
-![desktop wireframe](media/wireframes/Desktop_Wireframe.png)
-![mobile wireframe](media/wireframes/Mobile_Wireframe.png)
+Wireframes were done using Figma. The below is an early plan I had in mind when creating the project and may well lead to future implementation. I had planned for a larger search input on the page but as the project progressed, I thought having it in the navigation bar looked neater.
+
+![desktop wireframe](media/wireframes/desktop_wireframe.png)
+![mobile wireframe](media/wireframes/mobile_wireframe.png)
 
 ---
 ### Database Schema 
-Please see the below Database Schema
-![database scheme](media/images/DataBase%20Schema-01.jpg)
+Please see the below Database Schema. It shows the different fields I used for my database. Understanding this aspect of the project is integral when setting up as in hindsight, I would have liked to have added on a Vegetarian or Vegan label.
+
+![database scheme](media/images/database-schema-01.jpg)
 
 ## Features
 
@@ -73,25 +81,25 @@ Please see the below Database Schema
 - #### Navigation bar
     - The navigation bar will always show at the top of the page and will show user certain links depending on whether or not they are a registered user. If they are a guest, they will see the All Recipes, Register, Login and Search bar, whereas if they are logged in, they will see All Recipes, Add Recipe, My Recipes, Logout and the search bar
 
-    ![Navbar](media/images/Nav-Bar.JPG)
+    ![Navbar](media/images/nav-bar.JPG)
 
 
 - #### Hero Image
-    - The hero image was a taken from www.freepik.com and is presented as a slightly darkened imaged so the overlayed text will appear more legible. The text introduces the user to the website and what they can expect. As well as holding a sign up button that will lead the user to create an account if they have not done so already.
+    - The hero image was taken from www.freepik.com and is presented as a slightly darkened image so the overlaid text will appear more legible. The text introduces the user to the website and what they can expect. As well as holding a sign up button that will lead the user to create an account if they have not done so already.
 
-    ![Hero image](media/images/Hero-Image.JPG)
+    ![Hero image](media/images/hero-image.JPG)
 
 
 - #### Quotation
     - I used an existing famous recipe quotation and styled it using css gradients to make it more aesthetic for the user. This gradient represents the same colour scheme that was used in the Full Snack Recipe branding.
 
-    ![quotation](media/images/Quote.JPG)
+    ![quotation](media/images/quote.JPG)
 
 - #### Recipe Cards
-    - The first set of recipe cards are diaplyed on the homepage. They work in tandem with a pagination featured that lets the user cycle through the various recipes. Only 6 recipes will appear on the page at any one time.
-    - The cards design was done with keeping the colour scheme in mind so it all works together.
+    - The first set of recipe cards are displayed on the homepage. They work in tandem with a pagination feature that lets the user cycle through the various recipes. Only 6 recipes will appear on the page at any one time.
+    - The card's design was done with keeping the colour scheme in mind so it all works together.
 
-    ![recipe cards](media/images/Recipe-Card.JPG)
+    ![recipe cards](media/images/recipe-card.JPG)
 
 - #### Pagination
     - At the end of each card set, there is a pagination section that lets the user click through so that they can see the next or previous set of recipes.
@@ -103,18 +111,20 @@ Please see the below Database Schema
 
     ![footer](media/images/footer.JPG)
 
-[Back to top ⇧](#eat-me)
+[Back to top ⇧](#full-snack-recipes)
 
 ### Accounts
 - #### Register Page
-    - The register page is used to create an account. It is based on the same register page in the django walkthough project.
+    - The register page is used to create an account. It is based on the same register page in the django walkthrough project.
     - A success message will appear once a user successfully registers.
 
     ![sign up page](media/images/register.JPG)
 
+    **As a user I can register an account so that I can have my own profile of saved recipes**
+
 - #### Login Page
     - The login page is used to log in users with an existing account.
-    - It is based on the same register page in the django walkthough project.
+    - It is based on the same register page in the django walkthrough project.
     - A success message will appear once a user successfully logs in.
 
     ![sign in page](media/images/login.JPG)
@@ -125,31 +135,33 @@ Please see the below Database Schema
 
     ![log out page](media/images/sign-out.JPG)
 
+    **As a user I can log out of my account so that I can have my session terminated**
+
 [Back to top ⇧](#full-snack-recipes)
 
 ### All Recipes Page
+    - The site will paginate to 6 recipes at any one time. Like the main homepage, there will be a pagination feature at the bottom to help the users navigate through the list of various recipes.
 
-- #### Recipe Cards
-    - The site will pagination to 6 recipes at any one time. Like the main homepage, there will be a pagination feature at the bottom to help the users navigate through the list of various recipes.
+![all recipes page](media/images/all-recipes.JPG)
 
-    ![all recipes page](media/images/all-recipes.JPG)
+**As a guest I can view recipes so that I don't need to make an account**
 
 
 ### My Recipes Page
 
 - #### My Recipes
-    - This page shows upto 6 recipes at anytime.
+    - This page shows up to 6 recipes at any time.
     - The pagination feature will show at the bottom of the page
     - There are two buttons to help the user either Edit or Delete a recipe
 
     ![my recipes](media/images/my-recipes.JPG)
 
 - #### Update Recipes
-    - This page wil let the user update any recipes that they have created.
+    - This page will let the user update any recipes that they have created.
 
     ![update recipe](media/images/update-recipe.JPG)
 
-    - If the user tries to update a recipe that is not theirs, they will be be shown a forbidden message.
+    - If the user tries to update a recipe that is not theirs, they will be shown a forbidden message.
 
     ![not your recipe](media/images/cant-update.JPG)
 
@@ -159,6 +171,8 @@ Please see the below Database Schema
 
     ![delete recipe](media/images/delete-recipe.JPG)
 
+    **As a user I can delete my saved recipes**
+
 - #### No Recipes?
     - If the user clicks on the My Recipes link and they have no saved recipes, a message will be shown prompting them to create one!
 
@@ -167,11 +181,14 @@ Please see the below Database Schema
 ### Searched Recipes Page
 
 - #### Searched Recipes
-    - Anything entered into the search bar in the navigation bar displays results here. 
+    - Anything entered into the search bar in the navigation bar displays results here.
 
     ![search page](media/images/search.JPG)
 
-[Back to top ⇧](#full-snack-recipe)
+    **As a User / Guest I can search recipes using various keywords so that I can find a recipe faster**
+
+
+[Back to top ⇧](#full-snack-recipes)
 
 ### Recipe Detail Page
 
@@ -181,14 +198,6 @@ Please see the below Database Schema
 
     ![recipe detail](media/images/recipe-detail-1.JPG)
     ![recipe detail](media/images/recipe-detail-2.JPG)
-
-- #### Main Section
-    - The main body of the page consists of the description, ingredients, and method. These combined is what creates the whole recipe.
-    - At the bottom of the section is an icon and counter for both likes and comments.
-    - Clicking the outlined heart renders the recipe 'liked' by the user which will then fill in the heart, add 1 to the counter, and add the recipe to the users favourite recipes page.
-    - Alternatively, clicking a filled in heart renders the recipe 'unliked' which will then change the heart back to an outline, reduce the counter by 1 and remove the recipe from the user's favourite recipe page.
-
-    ![recipe main section](assets/images/recipe-main-section.png)
 
 - #### Comments
     - At the bottom of the page is the comment section. Here you can view all comments left by users.
@@ -200,9 +209,11 @@ Please see the below Database Schema
     ![comment section](media/images/comments.JPG)
     ![comment section](media/images/comment-approval.JPG)
 
+    **As a user I can comment on recipes so that interact with fellow users**
+
 - #### Likes / Comments view
     - A user who is logged in has the ability to like a recipe. This will show up on the card for each recipe so each user can see how many likes it has received.
-    - Having a favourite recipes page of recipes tha the user has liked is a feature to be implemented in the future
+    - Having a favourite recipes page of recipes that the user has liked is a feature to be implemented in the future
     - The total amount of comments will also show up at the end of each recipe like in the below image.
 
     ![like recipe](media/images/like.JPG)
@@ -213,9 +224,9 @@ Please see the below Database Schema
     - The adding recipe page is where users upload their recipes
     - Each recipe is uploaded by filling out a form with various form fields.
     - You will need to fill out all form fields otherwise you will get an error message.
-    - The user will then be presented with an option to upload a image of the recipe. This is optional and there is a placeholder image in place in the case that an image is not uploaded.
+    - The user will then be presented with an option to upload an image of the recipe. This is optional and there is a placeholder image in place in the case that an image is not uploaded.
     - The user will need to click on published in the drop down menu in order for the recipe to show on the front end of the website.
-    - I would have liked for the recipe to have gone straight to published but did create the database at the beginning with this option so knew it would create problems if I tried to change it.
+    - I would have liked for the recipe to have gone straight to published but did create the database at the beginning with this option so I knew it would create problems if I tried to change it.
     - An add Recipe button is present at the bottom of the page once the form is ready to send.
     - A cancel button is also available if the user wants to cancel making a recipe.
     - If a user tries to access this page without being signed in they will receive an error and a message will be shown showing a not logged in message.
@@ -223,7 +234,9 @@ Please see the below Database Schema
 
     ![add recipe](media/images/add-recipe.JPG)
 
-### Edit Recipe Page
+    **As a user I can add recipes so that they are saved to my profile and the site for other users to view**
+
+### Update Recipe Page
 
 - #### Editing Recipes
     - Editing a recipe brings up the form that was filled in when the recipe was created and has all the fields filled out with the original content.
@@ -232,15 +245,28 @@ Please see the below Database Schema
     - If a user tries to access this page without being signed in they will receive a not logged in error.
     - If a user tries to edit a recipe that does not belong to them they receive a forbidden access error.
 
-    ![edit recipe page](assets/images/edit-recipe-page.png)
+    ![edit recipe](media/images/update-recipe.JPG)
+
+    **As a user I can edit my recipes so that I can update the information**
+
+- #### Responsive Design
+
+    The website is responsive across various screen sizes as shown in the below imagery
+
+    ![ipad screen](media/images/ipad-mini-768x1024.png)
+    ![mobile screen](media/images/iphone-xr-xs-max-414x896.png)
+    ![laptop](media/images/laptop-1-1440x900.png)
+    ![large screen](media/images/large-screen-688x1031.png)
+
+    **As a guest / user I can view the recipe site on any device without issue so that I have a better User Experience**
 
 - #### Features to add
     - A rating system that would allow users to rate each recipe.
     - Add Vegan and Vegetarian tick boxes to recipes.
     - Option to share recipes on social media.
-    - Email and forgot password authetication
+    - Email and forgot password authentication
 
-[Back to top ⇧](#full-snack-recipe)
+[Back to top ⇧](#full-snack-recipes)
 
 ## Technologies
 
@@ -309,6 +335,14 @@ Testing and results can be found [here](TESTING.md)
 
 This project was deployed using Github and Heroku.
 
+### Local Deployment
+- To test the app locally, the terminal within VScode was used. The steps to run this:
+
+- In your project workspace folder, open a terminal
+Run the command: python3 manage.py runserver
+Hit the 'open browser' button or visit http://localhost:8000/ in the browser.
+Use the website as usual.
+
 ---
 - ### Github 
 
@@ -322,9 +356,40 @@ This project was deployed using Github and Heroku.
     6. Once created I opened the new repository and clicked the green ‘Gitpod’ button to create a workspace in Gitpod for editing.
 
 ---
-- ### Django and Heroku
+### Django and Heroku
 
     To get the Django framework installed and set up I followed the Code institutes [Django Blog cheatsheet](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf).
+
+
+### Heroku
+
+Before starting work, the project was deployed to Heroku. This was done early in the process, to prevent having to deal with difficulties of deployment close to the project deadline. The following steps needed to be performed:
+
+#### Create Heroku app:
+
+* Login in to Heroku
+* Create a new app.
+* Select "New" and "Create new app".
+* Give the new app a name and click "Create new app".
+* Select a region (Europe for this app).
+
+#### Connect Postgres Database:
+
+* Open your app on the main dashboard of Heroku.
+* Open the Resources tab and scroll to the add-ons section.
+* Type 'Postgres' and select the Heroku Postgres option.
+* Copy the DATABASE_URL in the Config Vars section of the Settings tab.
+* To use the Postgres database in your development environment, copy the DATABASE_URL in your env.py file.
+
+#### Deploy App on Heroku:
+
+* Click "Settings".
+* Navigate to the "Config Vars" section and click "Reveal Config Vars"
+* Add SECRET_KEY variable
+* Add CLOUDINARY_URL variable
+* Add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY variables.
+* Under "Deployment Method" click on "GitHub" to get access to your repository.
+* Enable Automatic Deploys" or click "Deploy Branch" to deploy your app.
 
 ---   
 - ### Forking
